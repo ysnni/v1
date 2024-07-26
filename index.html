@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  pop Document </title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+.title {
+    margin-bottom : 20px;
+}
+
+        .title p {
+            text-decoration: solid;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: black; 
+        }
+
+        .popup {
+            background-color: white;
+            width: 375px;
+            height: 704px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+        }
+        
+        .popup h1 {
+            font-size: 0.9em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            font-size: 0.8em;
+            margin-bottom: 10px;
+            color: black;
+           
+        }
+
+        .section p {
+            font-size: 0.65em;
+            color: #0093FF;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            
+        }
+        .buttons button {
+            width: 60px;
+            height : 30px;
+            padding: 4px 8px;
+            border: 0.1px solid black;
+            border-radius: 25px;
+            background-color : white;
+            cursor: pointer;
+            
+        }
+
+
+        .buttons button.selected {
+            border-color: #0093FF ;
+            color: #0093FF;
+        }
+
+        .buttons button:hover{
+            background-color: #e6e6e6;
+        }
+        
+        .pop, .ppup {
+            position: absolute ;
+            top: 6.5% ;
+            transform: translateY (-50%);
+        }
+
+        .pop {
+            right: 532px;
+            height: 698px;
+       
+        }
+
+        .pop button{
+            font-size: 1 em;
+            border: none;
+            color:black;
+            background-color: white;
+        }
+
+
+        .ppup {
+            left : 528px;
+            height : 698px;
+        }
+
+        .ppup button{
+
+            font-size : 1em;
+            border: none;
+            color : black;
+            background-color: white;
+        }
+
+
+      .line-above{
+        border-top: 1px solid #e6e6e6;
+        margin-bottom: 10px;
+      }
+
+
+    </style>
+
+
+</head>
+
+
+<body>
+    <div class="pop">
+        <button id="closePopup"> x </button>
+</div>
+        <div class="ppup">  
+        <button id="backButton"> ← </button>
+</div>
+   
+    <div class="popup">
+        <h1> SafeSurf </h1>
+
+        <div class= "line-above"> </div>
+
+        <div class="title">
+             <p>필터</p>
+        </div>
+
+        <div class= "section">
+            <h2>사회적 유해</h2>
+            <p> 혐오 발언과 정치적 선전 및 조작 검열 </p>
+
+           <div class= "buttons">  
+             
+                <button>혐오</button>
+                <button>정치</button>
+                <button>광고</button>
+              </div>
+                
+
+</div>
+
+<div class="section">
+    <h2>불법 및 위험</h2>
+    <p> 법적으로 금지되거나 사회적으로 유해한 콘텐츠 검열 </p>
+
+<div class="buttons"> 
+    <button>음란</button>
+    <button>폭력</button>
+    <button>도박</button>
+    <button>불법</button>
+</div>
+</div>
+
+        <div class="section">
+            <h2>정신적 위험</h2>
+            <p> 정신 건강에 악영향을 미칠 수 있는 콘텐츠 검열 </p>
+
+
+            <div class="buttons">
+                <button>우울</button>
+                <button>자살</button>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        
+        // Optional JavaScript to toggle the selected class
+       document.querySelectorAll('.buttons button').forEach(button=> {
+        button.addEventListener('click',()=>{
+            button.classList.toggle('selected');
+        });
+       });
+            
+
+    </script>
+    <script src="./App.js"> </script>
+</body>
+</html>
+
