@@ -1,76 +1,113 @@
 import React, { useState } from 'react';
 import './App.css';
 
+
+
 const App = () => {
-  const [warningVisible, setWarningVisible] = useState(true);
+  const [selectedButtons, setSelectedButtons] = useState([]);
 
-  const navigate = (url) => {
-    window.location.href = url;
+  const toggleButton = (label) => {
+    setSelectedButtons((prevSelected) =>
+      prevSelected.includes(label)
+        ? prevSelected.filter((item) => item !== label)
+        : [...prevSelected, label]
+    );
   };
 
-  const scrollUp = () => {
-    const linkContent = document.getElementById('link-content');
-    linkContent.scrollBy({
-      top: -30,
-      behavior: 'smooth',
-    });
-  };
 
-  const scrollDown = () => {
-    const linkContent = document.getElementById('link-content');
-    linkContent.scrollBy({
-      top: 30,
-      behavior: 'smooth',
-    });
-  };
 
   return (
-    <div className="app">
+    <div className="app-container">
       <div className="pop">
-        <button id="closebutton">x</button>
+        <button id="closePopup"> x </button>
+      </div>
+      <div className="ppup">
+        <button id="backButton"> ← </button>
       </div>
 
       <div className="popup">
         <h1>SafeSurf</h1>
-      </div>
+        <div className="line-above"></div>
 
-      <div className="title">
-        <button
-          id="fishingSense"
-          onClick={() => setWarningVisible(!warningVisible)}
-        >
-          피싱 사이트 감지
-        </button>
-      </div>
+        <div className="title">
+          <p>필터</p>
+        </div>
 
-      <div className="line-above"></div>
-      {warningVisible && (
-        <div className="warning-popup" id="warning-popup">
-          <div className="warning-content">
-            <p>피싱사이트 차단이 현재 꺼져있습니다.</p>
-            <p1>개인정보 보호를 위해 피싱사이트 차단 활성화를 추천합니다.</p1>
+        <div className="section">
+          <h2>사회적 유해</h2>
+          <p> 혐오 발언과 정치적 선전 및 조작 검열 </p>
+          <div className="buttons">
+            <button
+              onClick={() => toggleButton('혐오')}
+              className={selectedButtons.includes('혐오') ? 'selected' : ''}
+            >
+              혐오
+            </button>
+            <button
+              onClick={() => toggleButton('정치')}
+              className={selectedButtons.includes('정치') ? 'selected' : ''}
+            >
+              정치
+            </button>
+            <button
+              onClick={() => toggleButton('광고')}
+              className={selectedButtons.includes('광고') ? 'selected' : ''}
+            >
+              광고
+            </button>
           </div>
         </div>
-      )}
 
-      <div className="link-list">
-        <div className="link-popup" id="Link-popup">
-          <div className="link-content" id="link-content">
-            <p href="#" id="link1" onClick={() => navigate('https://google.co.kr')}>
-              피싱링크 1
-            </p>
-            <p href="#" id="link2" onClick={() => navigate('https://merci.tistory.com')}>
-              피싱링크 2
-            </p>
-            <p href="#" id="link3" onClick={() => navigate('https://www.nhn-commerce.com')}>
-              피싱링크 3
-            </p>
+        <div className="section">
+          <h2>불법 및 위험</h2>
+          <p> 법적으로 금지되거나 사회적으로 유해한 콘텐츠 검열 </p>
+          <div className="buttons">
+            <button
+              onClick={() => toggleButton('음란')}
+              className={selectedButtons.includes('음란') ? 'selected' : ''}
+            >
+              음란
+            </button>
+            <button
+              onClick={() => toggleButton('폭력')}
+              className={selectedButtons.includes('폭력') ? 'selected' : ''}
+            >
+              폭력
+            </button>
+            <button
+              onClick={() => toggleButton('도박')}
+              className={selectedButtons.includes('도박') ? 'selected' : ''}
+            >
+              도박
+            </button>
+            <button
+              onClick={() => toggleButton('불법')}
+              className={selectedButtons.includes('불법') ? 'selected' : ''}
+            >
+              불법
+            </button>
+          </div>
+        </div>
+
+        <div className="section">
+          <h2>정신적 위험</h2>
+          <p> 정신 건강에 악영향을 미칠 수 있는 콘텐츠 검열 </p>
+          <div className="buttons">
+            <button
+              onClick={() => toggleButton('우울')}
+              className={selectedButtons.includes('우울') ? 'selected' : ''}
+            >
+              우울
+            </button>
+            <button
+              onClick={() => toggleButton('자살')}
+              className={selectedButtons.includes('자살') ? 'selected' : ''}
+            >
+              자살
+            </button>
           </div>
         </div>
       </div>
-
-      <button onClick={scrollUp}>Scroll Up</button>
-      <button onClick={scrollDown}>Scroll Down</button>
     </div>
   );
 };
